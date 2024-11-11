@@ -13,15 +13,18 @@ return new class extends Migration
     {
         Schema::create('permohonan_ekspor', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('perusahaan');
-            $table->unsignedBigInteger('karang');
-            $table->integer('jumlah');
-            $table->enum('status', ['menunggu', 'disetujui', 'ditolak']);
+            $table->unsignedBigInteger('perusahaan_id');
+            $table->string('nomor_permohonan')->unique();
+            $table->date('tanggal_permohonan');
+            $table->string('negara_tujuan');
+            $table->string('file_permohonan')->nullable();
+            $table->integer('jumlah_coral');
+            $table->enum('status', ['menunggu', 'disetujui', 'ditolak'])->default('menunggu');
             $table->timestamps();
-
-            $table->foreign('perusahaan')->references('id')->on('perusahaan');
-            $table->foreign('karang')->references('id')->on('corals');
+        
+            $table->foreign('perusahaan_id')->references('id')->on('perusahaan')->onDelete('cascade');
         });
+        
     }
 
     /**

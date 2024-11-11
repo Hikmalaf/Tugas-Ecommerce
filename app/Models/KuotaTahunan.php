@@ -15,4 +15,11 @@ class KuotaTahunan extends Model
     {
         return $this->hasMany(DetailKuota::class, 'annual_quota_id');
     }
+
+    // Relasi ke model Perusahaan
+    public function perusahaan()
+    {
+        return $this->belongsTo(Perusahaan::class, 'perusahaan_id');
+    }
+
 }

@@ -11,10 +11,14 @@ class Corals extends Model // Perhatikan nama model yang konsisten (Coral bukan 
     use HasFactory;
 
     protected $table = 'corals';
+    protected $fillable = [
+        'id',
+        'nama',
+    ];
 
     public function quotaDetails()
     {
-        // Ganti 'karang' dengan foreign key yang benar, misalnya 'coral_id'
-        return $this->hasMany(DetailKuota::class, 'coral_id'); // Pastikan nama kolom foreign key yang tepat
+        return $this->hasMany(DetailKuota::class, 'coral_id'); 
     }
+
 }

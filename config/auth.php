@@ -58,12 +58,13 @@ return [
     | Supported: "database", "eloquent"
     |
     */
+'providers' => [
+    'users' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Pengguna::class, // Ganti dengan model Pengguna
+    ],
 
-    'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
-        ],
+
 
         // 'users' => [
         //     'driver' => 'database',
